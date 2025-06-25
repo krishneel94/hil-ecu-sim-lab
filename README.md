@@ -29,16 +29,25 @@ A Hardware-in-the-Loop (HIL) simulation testbench for validating automotive ECUs
 
 ```mermaid
 flowchart TD
-    EngineECU([Engine ECU])
-    ClimateECU([Climate ECU])
-    DiagnosticECU([Diagnostic ECU])
-    Backend(Flask Backend)
-    Dashboard(Web Dashboard)
-    
-    EngineECU -->|CAN| ClimateECU
-    EngineECU -->|CAN| DiagnosticECU
-    ClimateECU -->|CAN| DiagnosticECU
-    DiagnosticECU -->|TCP/IP| Backend
-    Backend -->|WebSocket| Dashboard
-                        └────────────────────┘
+    subgraph ECUs
+        EngineECU([Engine ECU\n - TMP36 Temp Sensor\n - RPM Potentiometer])
+        ClimateECU([Climate ECU\n - Fan LED])
+        DiagnosticECU([Diagnostic ECU\n - CAN Logger\n - TCP Client])
+    end
+
+    subgraph Comm
+        CANBus[[CAN Bus (MCP2515)]]
+        TCPIP[[TCP/IP]]
+    end
+
+    subgraph Backend
+        Flask[Flask Server\n(Socket.IO + JSON)]
+        Dashboard[Web Dashboard\n(localhost:5000)]
+    end
+
+    EngineECU -->|CAN| CANBus
+    ClimateECU -->|CAN| CANBus
+    DiagnosticECU -->|CAN| CANBus
+    DiagnosticECU -->|TCP| TCPIP --> Flask
+    Flask -->|WebSocket| Dashboard
 
