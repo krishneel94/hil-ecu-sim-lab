@@ -4,18 +4,18 @@ A Hardware-in-the-Loop (HIL) simulation testbench for validating automotive ECUs
 
 ---
 
-## 🚦 Features
+## Features
 
-- 🧠 **Engine ECU** simulates RPM and coolant temperature using TMP36 + potentiometer
-- ❄️ **Climate ECU** listens for coolant temp and activates a fan (LED) if overheating
-- 🧪 **Diagnostics ECU** logs CAN traffic and sends TCP heartbeats to the UI backend
-- 📊 **Python/Flask backend** pushes real-time sensor data via WebSockets
-- 🖥️ **Live dashboard** with RPM/temp/fan status visualization
-- 🛠️ Designed to be easily extended for other protocols (I2C, LIN, MQTT)
+- **Engine ECU** simulates RPM and coolant temperature using TMP36 + potentiometer
+- **Climate ECU** listens for coolant temp and activates a fan (LED) if overheating
+- **Diagnostics ECU** logs CAN traffic and sends TCP heartbeats to the UI backend
+- **Python/Flask backend** pushes real-time sensor data via WebSockets
+- **Live dashboard** with RPM/temp/fan status visualization
+- Designed to be easily extended for other protocols (I2C, LIN, MQTT)
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - Arduino (C++) for ECU firmware
 - MCP2515 CAN Bus modules for communication
@@ -25,7 +25,7 @@ A Hardware-in-the-Loop (HIL) simulation testbench for validating automotive ECUs
 
 ---
 
-## 📡 Architecture
+## Architecture
 ```mermaid
 flowchart TD
     EngineECU[Engine ECU]
