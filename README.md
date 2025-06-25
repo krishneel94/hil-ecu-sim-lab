@@ -25,6 +25,7 @@ A Hardware-in-the-Loop (HIL) simulation testbench for validating automotive ECUs
 
 ---
 
+## 📡 Architecture
 ```mermaid
 flowchart TD
     EngineECU[Engine ECU]
