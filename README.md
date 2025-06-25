@@ -27,4 +27,34 @@ A Hardware-in-the-Loop (HIL) simulation testbench for validating automotive ECUs
 
 ## 📡 Architecture
 
+┌───────────────────────────────────────────────────────────────┐
+│                       HIL ECU Sim Lab                         │
+│                      (System Overview)                        │
+└───────────────────────────────────────────────────────────────┘
+
+[Engine ECU]                [Climate ECU]                [Diagnostic ECU]
+   └─────┬──────┐              └─────┬──────┐               └────┬────┐
+   TMP36│    RPM Pot                Fan LED                     CAN + TCP
+        │                            ▲                             ▲
+        ▼                            │                             │
+    Simulate Temp + RPM       Turns fan ON if temp > 90°C         │
+                                (receives from Engine ECU)        │
+        └──────────── CAN Bus (MCP2515) ────────────────┘         │
+                             SPI Interface                        │
+                                  ▼                               │
+                       ┌────────────────────┐                     │
+                       │  ESP32 / Arduino MCUs│                    │
+                       └────────────────────┘                     │
+                                  ▼                               ▼
+                       ┌────────────────────┐         ┌────────────────────────────┐
+                       │  Python Flask Server │<──────►│  TCP Client (Diagnostic ECU)│
+                       │  (Flask + SocketIO) │         └────────────────────────────┘
+                       └────────────────────┘
+                                  │
+                          WebSockets + JSON
+                                  ▼
+                        ┌────────────────────┐
+                        │   Web Dashboard    │
+                        │  (localhost:5000)  │
+                        └────────────────────┘
 
