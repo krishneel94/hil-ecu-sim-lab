@@ -1,6 +1,6 @@
 # HIL ECU Sim Lab
 
-A Hardware-in-the-Loop (HIL) simulation testbench for validating automotive ECUs over **CAN**, **Ethernet**, and **TCP/IP** using Python, Arduino, and a real-time diagnostics dashboard (Flask + WebSockets). This project simulates three interacting ECUs — Engine, Climate, and Diagnostics — designed to model vehicle end-of-line (EOL) testing workflows.
+A Hardware-in-the-Loop (HIL) simulation testbench for validating automotive ECUs over **CAN**, **Ethernet**, and **TCP/IP** using Python, Arduino, and a real-time diagnostics dashboard (Flask + WebSockets). This project simulates three interacting ECUs: Engine, Climate, and Diagnostics and is designed to model vehicle end-of-line (EOL) testing workflows.
 
 ---
 
